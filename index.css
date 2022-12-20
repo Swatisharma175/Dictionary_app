@@ -1,0 +1,51 @@
+body{
+    background-color: beige;
+}
+h5{
+    margin: 0;
+    padding: 0;
+}
+small{
+    font-size: 10px;
+    margin: 0;
+    padding: 0;
+}
+
+input{
+    width: 80%;
+    margin-left: 9vw;
+}
+
+input:focus{
+    outline: none;
+    
+}
+#result-body{
+    margin: 0  5vw;
+}
+.display-result{
+    /* background-color: red; */
+}
+
+button{
+    margin-left: 1px;
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+}
+button:hover{
+    color:rgb(134, 134, 145);
+}
+#input-word{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 20px 30px 20px;
+    width: 80%;
+}
+#main-body{
+    margin: auto;
+    width: 80vw;
+    height: 80vh;
+    background: white;
+}
