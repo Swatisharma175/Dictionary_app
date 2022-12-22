@@ -14,16 +14,22 @@
 </nav>
 <div id="main-body">
     <div id="input-word">
-        <input type="text" placeholder="Search..">
-      <button> <i class="fa-solid fa-magnifying-glass"></i></button>
-    </div>
+        <div class="autocomplete" style="width:300px;">
+            <input id="myInput" type="text" name="myCountry" placeholder="Search...">
+          </div>
+        <!-- <input type="text" placeholder="Search..."> -->
+      <button id="search" onClick="findMeaning()"> <i class="fa-solid fa-magnifying-glass"></i></button>
+          </div>
+    <hr>
     <div id="result-body">
-     <div class="display-result">
-        <h5>word</h5>
-        <small>/wəːd/</small>
-     </div>
+    
     </div>
     </div>
+    <div id="text">
+      
+    </div>
+    </body>
+    <script src="index.js"></script>
     <script src="https://kit.fontawesome.com/59134409bc.js" crossorigin="anonymous"></script>
 </body>
 </html>

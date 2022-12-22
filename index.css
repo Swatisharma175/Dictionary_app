@@ -3,12 +3,27 @@ body{
 }
 h5{
     margin: 0;
+    padding: 5px 0 0 0;
+    line-height: 5px;
+}
+span{
+    padding-right: 2px;
+}
+
+ul{
+    margin: 0;
     padding: 0;
+}
+li{
+    list-style-type: none;
 }
 small{
     font-size: 10px;
     margin: 0;
     padding: 0;
+}
+a, a:visited {
+    color: rgba(2, 2, 80, 0.848);
 }
 
 input{
@@ -21,26 +36,39 @@ input:focus{
     
 }
 #result-body{
-    margin: 0  5vw;
+    margin: 5vw;
 }
 .display-result{
     /* background-color: red; */
 }
+#word-audio{
+    border: none;
+    border-radius: 50%;
+    padding: 2px;
+    float: right;
+    margin-top: 3px ;
+}
+#word-audio:focus{
+   background-color: aqua;
+}
 
-button{
+#search{
     margin-left: 1px;
     border: none;
     background-color: inherit;
     cursor: pointer;
 }
-button:hover{
+#search:hover{
     color:rgb(134, 134, 145);
+}
+hr{
+    margin: 0;
 }
 #input-word{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px 20px 30px 20px;
+    padding: 20px;
     width: 80%;
 }
 #main-body{
