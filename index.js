@@ -3,22 +3,13 @@ const uri = "https://api.dictionaryapi.dev/api/v2/entries/en/";
 const resultBody = document.getElementById("result-body");
 const inputWord = document.getElementById("myInput");
 
-console.log(inputWord.value);
 
 inputWord.addEventListener("keyup", function(event) {
     findMeaning();
 }
 );
-// document.addEventListener('keypress', function (e) {
-//   if (e.key === 'i') {
-//     findMeaning();
-//   }
-// });
-
-
 function findMeaning(){
  const uriWord = uri+inputWord.value.toLowerCase();
- console.log(inputWord.value + " hi");
 if(inputWord.value !== ''){
 fetch(uriWord)
   .then((response) => {
@@ -29,37 +20,29 @@ fetch(uriWord)
     }
     })
     .then((data) =>{
-      console.log(data);
-        if(data != undefined){
+        if(data !== undefined){
         resultBody.innerHTML = ` <div class="display-result">
-        <button id="word-audio"><i class="fa-solid fa-volume-high"></i></button>
+        ${data[0].phonetics[0].audio ?'<button id="word-audio"><i class="fa-solid fa-volume-high"></i></button>' : ''}
         <h3>`+data[0].word+`</h3>
         <small>`+data[0].phonetics[0].text+`</small>
         <div id="listOfMeaning"><div>
         </div>`
-        console.log("he mata ji");
-        if(data[0].phonetics[0].audio === ''){
-          console.log("swati");
-          document.querySelector("#word-audio").classList.remove;
-        }
-        // document.getElementById('listOfMeaning').innerHTML = "swati";
         var ul = document.createElement('ul');
-        document.getElementById('listOfMeaning').appendChild(ul);
+document.getElementById('listOfMeaning').appendChild(ul);
         for(let i = 0 ; i < data[0].meanings.length ; i++){
             var li = document.createElement('li');
             ul.appendChild(li);
             li.innerHTML = `<ul><li><span>${data[0].meanings[i].partOfSpeech}<span>: ${data[0].meanings[i].definitions[0].definition}</li>
                                 <li>synonyms :- ${data[0].meanings[i].synonyms[0]}</li></ul>`
-            console.log("hi " + data[0].meanings[i].synonyms[0]);
         }
-                console.log(data)
+if(data[0].phonetics[0].audio){
                 const wordAudio = document.querySelector('#word-audio');
                 wordAudio.addEventListener("click",function(){
-                  console.log("avaj " + data[0].phonetics[0].audio)
                   const audio = new Audio(data[0].phonetics[0].audio);
                   audio.play();
                 })
               }
+            }
 }).catch((err) => {
       console.log(err);
         resultBody.innerText = "Could Not load";
@@ -70,7 +53,6 @@ else{
   resultBody.innerText = "plese enter a word";
 }
 }
-//   console.log(v);
 
 
 
@@ -85,22 +67,16 @@ function autocomplete(inp, arr) {
         a = document.createElement("DIV");
         a.setAttribute("id", this.id + "autocomplete-list");
         a.setAttribute("class", "autocomplete-items");
-        /*append the DIV element as a child of the autocomplete container:*/
         this.parentNode.appendChild(a);
-        /*for each item in the array...*/
         for (i = 0; i < arr.length; i++) {
-          /*check if the item starts with the same letters as the text field value:*/
+        
           if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-            /*create a DIV element for each matching element:*/
+          
             b = document.createElement("DIV");
-            /*make the matching letters bold:*/
             b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
             b.innerHTML += arr[i].substr(val.length);
-            /*insert a input field that will hold the current array item's value:*/
             b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-            /*execute a function when someone clicks on the item value (DIV element):*/
             b.addEventListener("click", function(e) {
-                /*insert the value for the autocomplete text field:*/
                 inp.value = this.getElementsByTagName("input")[0].value;
                 /*close the list of autocompleted values,
                 (or any other open lists of autocompleted values:*/
