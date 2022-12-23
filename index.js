@@ -5,15 +5,25 @@ const inputWord = document.getElementById("myInput");
 
 console.log(inputWord.value);
 
+inputWord.addEventListener("keyup", function(event) {
+    findMeaning();
+}
+);
+// document.addEventListener('keypress', function (e) {
+//   if (e.key === 'i') {
+//     findMeaning();
+//   }
+// });
+
 
 function findMeaning(){
  const uriWord = uri+inputWord.value.toLowerCase();
- console.log(inputWord.value === '');
+ console.log(inputWord.value + " hi");
 if(inputWord.value !== ''){
 fetch(uriWord)
   .then((response) => {
     if(response.ok === false){
-      resultBody.innerText = "Sorry No word found";
+      resultBody.innerText = "Sorry No word found by " + inputWord.value;
     }else {
       return response.json()
     }
@@ -23,10 +33,15 @@ fetch(uriWord)
         if(data != undefined){
         resultBody.innerHTML = ` <div class="display-result">
         <button id="word-audio"><i class="fa-solid fa-volume-high"></i></button>
-        <h5>`+data[0].word+`</h5>
+        <h3>`+data[0].word+`</h3>
         <small>`+data[0].phonetics[0].text+`</small>
         <div id="listOfMeaning"><div>
         </div>`
+        console.log("he mata ji");
+        if(data[0].phonetics[0].audio === ''){
+          console.log("swati");
+          document.querySelector("#word-audio").classList.remove;
+        }
         // document.getElementById('listOfMeaning').innerHTML = "swati";
         var ul = document.createElement('ul');
         document.getElementById('listOfMeaning').appendChild(ul);
@@ -40,6 +55,7 @@ fetch(uriWord)
                 console.log(data)
                 const wordAudio = document.querySelector('#word-audio');
                 wordAudio.addEventListener("click",function(){
+                  console.log("avaj " + data[0].phonetics[0].audio)
                   const audio = new Audio(data[0].phonetics[0].audio);
                   audio.play();
                 })
@@ -59,19 +75,13 @@ else{
 
 
 //   autocomplete -----------------------------------------
-// let enteredInput =
 function autocomplete(inp, arr) {
-    /*the autocomplete function takes two arguments,
-    the text field element and an array of possible autocompleted values:*/
     var currentFocus;
-    /*execute a function when someone writes in the text field:*/
     inp.addEventListener("input", function(e) {
         var a, b, i, val = this.value;
-        /*close any already open lists of autocompleted values*/
         closeAllLists();
         if (!val) { return false;}
         currentFocus = -1;
-        /*create a DIV element that will contain the items (values):*/
         a = document.createElement("DIV");
         a.setAttribute("id", this.id + "autocomplete-list");
         a.setAttribute("class", "autocomplete-items");

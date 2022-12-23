@@ -1,9 +1,9 @@
 body{
     background-color: beige;
 }
-h5{
+h3{
     margin: 0;
-    padding: 5px 0 0 0;
+    padding: 5px 0;
     line-height: 5px;
 }
 span{
@@ -27,13 +27,18 @@ a, a:visited {
 }
 
 input{
-    width: 80%;
-    margin-left: 9vw;
+    width: 98%;
+    padding-left: 5px;
+    /* margin-left: 7.5vw; */
 }
 
 input:focus{
     outline: none;
     
+}
+.autocomplete-items{
+    max-height: 90px;
+    overflow-y: scroll;
 }
 #result-body{
     margin: 5vw;
@@ -41,12 +46,16 @@ input:focus{
 .display-result{
     /* background-color: red; */
 }
+.hidden{
+    display: none;
+}
 #word-audio{
     border: none;
     border-radius: 50%;
     padding: 2px;
     float: right;
     margin-top: 3px ;
+    transition: background-color 2s;
 }
 #word-audio:focus{
    background-color: aqua;
@@ -64,10 +73,10 @@ input:focus{
 hr{
     margin: 0;
 }
+
 #input-word{
     display: flex;
     justify-content: center;
-    align-items: center;
     padding: 20px;
     width: 80%;
 }
