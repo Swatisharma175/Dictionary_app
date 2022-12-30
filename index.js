@@ -14,7 +14,7 @@ if(inputWord.value !== ''){
 fetch(uriWord)
   .then((response) => {
     if(response.ok === false){
-      resultBody.innerText = "Sorry No word found by " + inputWord.value;
+      resultBody.innerText = "Sorry, No meaning found by word \"" + inputWord.value + "\"";
     }else {
       return response.json()
     }

@@ -9,13 +9,14 @@
      <link rel="stylesheet" href="/index.css" class="style">
 </head>
 <body>
-    <nav>
-    <h3><a href="/">TheDictionary.com</a></h3>
-</nav>
+    <header id="header">
+   <div> <h3><a href="/">TheDictionary.com</a></h3></div><div id="nav-links"><a href="https://github.com/Swatisharma175/Dictionary_app" target="_main"><i class="fa-2x fa-brands fa-github"></i></a></div>
+</header>
+<main>
 <div id="main-body">
     <div id="input-word">
         <div class="autocomplete">
-        <input id="myInput" type="text" name="words" placeholder="Search...">
+        <input id="myInput" type="text" name="words" placeholder="Type a word here to search...">
         </div>
         <!-- <button id="search" onClick="findMeaning()"> <i class="fa-solid fa-magnifying-glass"></i></button> -->
     </div>
@@ -27,6 +28,8 @@
     <div id="text">
       
     </div>
+    </main>
+    <footer><p id="footer">This Dictionary is Made using vanilla html, css , js by Swati Sharma</p></footer>
     </body>
     <script src="index.js"></script>
     <script src="https://kit.fontawesome.com/59134409bc.js" crossorigin="anonymous"></script>
